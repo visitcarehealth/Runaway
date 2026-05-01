@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Runaway - 2D Mobile Game</title>
+<title>RunawayNandan - 2D Mobile Game</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body{min-height:100vh;background:linear-gradient(135deg,#0f172a,#1d4ed8);display:flex;justify-content:center;align-items:center;color:white;overflow:hidden}
@@ -13,7 +13,7 @@ body{min-height:100vh;background:linear-gradient(135deg,#0f172a,#1d4ed8);display
 .stats{display:flex;gap:6px;font-size:13px}.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 8px;font-weight:900}
 #gameBox{position:relative;flex:1;min-height:430px;background:linear-gradient(#78c6ff 0%,#dff6ff 58%,#80d56f 58%,#58b957 100%);border-radius:24px;overflow:hidden;border:3px solid rgba(255,255,255,.3);box-shadow:0 15px 40px rgba(0,0,0,.35);touch-action:none}
 .road{position:absolute;left:0;bottom:0;width:100%;height:42%;background:linear-gradient(#585858,#303030);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%)}
-.lane-line{position:absolute;left:50%;bottom:0;width:8px;height:70px;background:#facc15;transform:translateX(-50%);border-radius:10px;animation:roadLine .7s linear infinite}
+.lane-line{position:absolute;left:50%;bottom:0;width:8px;height:70px;background:#facc15;transform:translateX(-50%);border-radius:10px;animation:roadLine .3s linear infinite}
 @keyframes roadLine{from{bottom:42%;opacity:0}to{bottom:-80px;opacity:1}}
 .cloud{position:absolute;width:80px;height:28px;background:rgba(255,255,255,.85);border-radius:40px;animation:cloudMove 16s linear infinite}
 .cloud:before,.cloud:after{content:"";position:absolute;background:rgba(255,255,255,.9);border-radius:50%}
@@ -22,10 +22,10 @@ body{min-height:100vh;background:linear-gradient(135deg,#0f172a,#1d4ed8);display
 @keyframes cloudMove{from{transform:translateX(0)}to{transform:translateX(-520px)}}
 .hud{position:absolute;top:12px;left:12px;background:rgba(15,23,42,.82);border:2px solid rgba(255,255,255,.22);border-radius:16px;padding:10px 12px;z-index:6;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.28)}
 .pause-btn{position:absolute;right:12px;top:12px;width:48px;height:48px;padding:0;border-radius:16px;z-index:7;font-size:22px;background:linear-gradient(135deg,#2563eb,#0f172a);box-shadow:0 5px 0 #020617;color:white}
-#player{position:absolute;width:58px;height:76px;left:50%;bottom:48px;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 8px 4px rgba(0,0,0,.35));animation:runBounce .45s ease-in-out infinite alternate}
+#player{position:absolute;width:58px;height:76px;left:50%;bottom:48px;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 8px 4px rgba(0,0,0,.35));animation:runBounce .65s ease-in-out infinite alternate}
 #player:before{content:"😎";position:absolute;left:11px;top:0;font-size:34px;z-index:2}
 #player:after{content:"";position:absolute;left:12px;top:32px;width:35px;height:40px;background:linear-gradient(#fb923c,#ea580c);border-radius:16px 16px 9px 9px;box-shadow:0 5px 0 #9a3412}
-.leg{position:absolute;bottom:0;width:12px;height:18px;background:#1e293b;border-radius:8px;z-index:1}.leg.l{left:14px;animation:leg1 .35s infinite alternate}.leg.r{right:14px;animation:leg2 .35s infinite alternate}
+.leg{position:absolute;bottom:0;width:12px;height:18px;background:#1e293b;border-radius:8px;z-index:1}.leg.l{left:14px;animation:leg1 .35s infinite alternate}.leg.r{right:14px;animation:leg2 .45s infinite alternate}
 @keyframes runBounce{from{transform:translateX(-50%) translateY(0) rotate(-1deg)}to{transform:translateX(-50%) translateY(-5px) rotate(1deg)}}
 @keyframes leg1{to{transform:rotate(18deg)}}@keyframes leg2{to{transform:rotate(-18deg)}}
 .obstacle{position:absolute;width:45px;height:45px;border-radius:12px;background:linear-gradient(#ef4444,#991b1b);box-shadow:0 5px 0 #7f1d1d;z-index:3}
@@ -41,14 +41,14 @@ button:active{transform:translateY(3px);box-shadow:0 2px 0 #9a3412}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .control-btn{padding:18px;font-size:26px;background:linear-gradient(135deg,rgba(37,99,235,.9),rgba(15,23,42,.92));border:2px solid rgba(255,255,255,.25);box-shadow:0 6px 0 rgba(2,6,23,.8);color:white;user-select:none}
 .shield-mode #player{filter:drop-shadow(0 0 15px rgba(34,211,238,1))}
-#player.hit{animation:hitShake .18s linear}
+#player.hit{animation:hitShake .13s linear}
 @keyframes hitShake{0%{transform:translateX(-50%)}25%{transform:translateX(calc(-50% - 8px))}50%{transform:translateX(calc(-50% + 8px))}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
 <div class="game-wrapper">
   <div class="top-bar">
-    <div class="brand"><h1>🏃 Runaway</h1><p>Pro 2D Web Game</p></div>
+    <div class="brand"><h1>🏃 RunawayNandan</h1><p>Pro 2D Web Game</p></div>
     <div class="stats">
       <div class="pill">⭐ <span id="score">0</span></div>
       <div class="pill">🏆 <span id="bestScore">0</span></div>
@@ -60,7 +60,7 @@ button:active{transform:translateY(3px);box-shadow:0 2px 0 #9a3412}
     <div class="hud"><div>❤️ <span id="livesText">3</span></div><div>🎯 Lv <span id="levelText">1</span></div></div>
     <button id="pauseBtn" class="pause-btn">⏸</button>
     <div id="player"><div class="leg l"></div><div class="leg r"></div></div>
-    <div id="messageScreen"><div class="panel"><h2>Runaway</h2><p>Dodge danger, collect star coins, use shield and survive longer.</p><button onclick="startGame()">Start Game</button></div></div>
+    <div id="messageScreen"><div class="panel"><h2>RunawayNandan</h2><p>Dodge danger, collect star coins, use shield and survive longer.</p><button onclick="startGame()">Start Game</button></div></div>
   </div>
   <div class="controls"><button class="control-btn" id="leftBtn">⬅️</button><button class="control-btn" id="rightBtn">➡️</button></div>
 </div>
